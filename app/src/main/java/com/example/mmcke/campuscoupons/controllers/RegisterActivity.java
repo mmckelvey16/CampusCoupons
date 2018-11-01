@@ -23,5 +23,14 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button StudentRegister = findViewById(R.id.studentButton);
+        StudentRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), StudentRegisterActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

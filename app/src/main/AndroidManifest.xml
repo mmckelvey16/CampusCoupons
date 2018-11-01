@@ -23,7 +23,8 @@
         </activity>
         <activity android:name=".controllers.LoginActivity" />
         <activity android:name=".controllers.RegisterActivity" />
-        <activity android:name=".controllers.ParentRegisterActivity"></activity>
+        <activity android:name=".controllers.ParentRegisterActivity" />
+        <activity android:name=".controllers.StudentRegisterActivity"></activity>
     </application>
 
 </manifest>
