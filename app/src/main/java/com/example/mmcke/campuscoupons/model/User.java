@@ -15,5 +15,4 @@ public abstract class User {
     private enum school {
         GEORGIASTATE;
     }
-
 }

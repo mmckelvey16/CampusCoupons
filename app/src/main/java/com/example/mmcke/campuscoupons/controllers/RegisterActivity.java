@@ -32,5 +32,14 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button EmployeeRegister = findViewById(R.id.employeeButton);
+        EmployeeRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), EmployeeRegisterActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
