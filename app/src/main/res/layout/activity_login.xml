@@ -6,23 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.example.mmcke.campuscoupons.controllers.LoginActivity">
 
-    <EditText
-        android:id="@+id/header"
-        android:layout_width="0dp"
-        android:layout_height="46dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@android:color/transparent"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Log In"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/emailHead"
         android:layout_width="wrap_content"
@@ -38,7 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/header"
-        app:layout_constraintVertical_bias="0.097" />
+        app:layout_constraintVertical_bias="0.121" />
 
     <EditText
         android:id="@+id/email"
@@ -72,7 +55,7 @@
         app:layout_constraintVertical_bias="0.164" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="36dp"
         android:layout_marginEnd="8dp"
@@ -99,7 +82,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText5" />
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
 
     <com.facebook.login.widget.LoginButton
@@ -113,4 +96,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/submitButton" />
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Log In"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

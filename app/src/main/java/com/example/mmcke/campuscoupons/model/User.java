@@ -11,8 +11,37 @@ public abstract class User {
     private String lastName;
     private String email;
     private String password;
-    private int phoneNumber;
+    private String phoneNumber;
     private enum school {
         GEORGIASTATE;
+    }
+
+    public User(String _firstName, String _lastName, String _email, String _password, String _phoneNumber) {
+        firstName = _firstName;
+        lastName = _lastName;
+        email = _email;
+        password = _password;
+        phoneNumber = _phoneNumber;
+        school _school = school.GEORGIASTATE;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 }
