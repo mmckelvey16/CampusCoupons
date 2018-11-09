@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.mmcke.campuscoupons.controllers.WhitePlanActivity">
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorPrimary"
+        android:text="Back"
+        android:textColor="@android:color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="White Plan"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.286"
+        app:layout_constraintStart_toEndOf="@+id/backButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <MultiAutoCompleteTextView
+        android:id="@+id/multiAutoCompleteTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="The White Plan is $5 per month and comes with:\n2 On Campus coupons per week\n8 On Campus coupons per month\n1/3 of all Off Campus coupons each month"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:background="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header"
+        app:layout_constraintVertical_bias="0.178" />
+
+    <Button
+        android:id="@+id/selectButton"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorPrimary"
+        android:text="Select Plan"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/multiAutoCompleteTextView" />
+
+</android.support.constraint.ConstraintLayout>

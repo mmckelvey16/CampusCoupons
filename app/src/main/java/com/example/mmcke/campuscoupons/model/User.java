@@ -1,5 +1,8 @@
 package com.example.mmcke.campuscoupons.model;
 
+import java.util.ArrayList;
+import com.example.mmcke.campuscoupons.model.School;
+
 /**
  * Created by mmcke on 11/1/2018.
  *
@@ -12,17 +15,16 @@ public abstract class User {
     private String email;
     private String password;
     private String phoneNumber;
-    private enum school {
-        GEORGIASTATE;
-    }
+    private String school;
 
-    public User(String _firstName, String _lastName, String _email, String _password, String _phoneNumber) {
+    public User(String _firstName, String _lastName, String _email, String _password, String _phoneNumber,
+                String _school) {
         firstName = _firstName;
         lastName = _lastName;
         email = _email;
         password = _password;
         phoneNumber = _phoneNumber;
-        school _school = school.GEORGIASTATE;
+        school = _school;
     }
 
     public String getFirstName() {
@@ -44,4 +46,6 @@ public abstract class User {
     public String getPhoneNumber() {
         return phoneNumber;
     }
+
+    public String getSchoolName() { return school;}
 }

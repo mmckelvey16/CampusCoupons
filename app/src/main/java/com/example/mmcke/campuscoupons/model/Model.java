@@ -1,6 +1,10 @@
 package com.example.mmcke.campuscoupons.model;
 
+import java.util.ArrayList;
+
 /**
+ *
+ * Singleton model class
  * Created by mmcke on 11/4/2018.
  */
 
@@ -12,6 +16,7 @@ public final class Model {
     }
 
     private User currentUser;
+    private ArrayList<School> schoolList;
 
     public void setCurrentUser(User user) {
         currentUser = user;

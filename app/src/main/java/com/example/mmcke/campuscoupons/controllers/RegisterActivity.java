@@ -7,16 +7,28 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 
 import com.example.mmcke.campuscoupons.R;
+import com.example.mmcke.campuscoupons.model.EmployeeUser;
 import com.example.mmcke.campuscoupons.model.Model;
 import com.example.mmcke.campuscoupons.model.StudentUser;
-import com.example.mmcke.campuscoupons.model.User;
 import com.example.mmcke.campuscoupons.model.ParentUser;
 import com.google.firebase.auth.FirebaseAuth;
+import com.example.mmcke.campuscoupons.model.School;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+
+import static java.lang.String.valueOf;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -28,6 +40,8 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText mPhone;
     private EditText mPass;
     private EditText mConfirmPass;
+    private Spinner mSchools;
+    private final ArrayList<String> schools = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +55,13 @@ public class RegisterActivity extends AppCompatActivity {
         mPass = findViewById(R.id.password);
         mConfirmPass = findViewById(R.id.confirmPassword);
         mPhone = findViewById(R.id.phoneNumber);
+        mSchools = findViewById(R.id.schoolList);
+
+        this.readEnumSchools();
+
+        final ArrayAdapter<String> schoolAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, schools);
+        schoolAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSchools.setAdapter(schoolAdapter);
 
         Button ParentRegister = findViewById(R.id.parentButton);
         ParentRegister.setOnClickListener(new View.OnClickListener() {
@@ -58,11 +79,12 @@ public class RegisterActivity extends AppCompatActivity {
                 String pass = passEditable.toString();
                 Editable passConfEditable = mConfirmPass.getText();
                 String confirmPass = passConfEditable.toString();
+                String school = mSchools.getSelectedItem().toString();
 
                 if (!pass.equals(confirmPass)) {
                     mPass.setError("Passwords must match");
                 } else {
-                    createNewParent(fName, lName, email, pass, phone);
+                    createNewParent(fName, lName, email, pass, phone, school);
                 }
             }
         });
@@ -83,11 +105,12 @@ public class RegisterActivity extends AppCompatActivity {
                 String pass = passEditable.toString();
                 Editable passConfEditable = mConfirmPass.getText();
                 String confirmPass = passConfEditable.toString();
+                String school = mSchools.getSelectedItem().toString();
 
                 if (!pass.equals(confirmPass)) {
                     mPass.setError("Passwords must match");
                 } else {
-                    createNewStudent(fName, lName, email, pass, phone);
+                    createNewStudent(fName, lName, email, pass, phone, school);
                 }
             }
         });
@@ -108,43 +131,47 @@ public class RegisterActivity extends AppCompatActivity {
                 String pass = passEditable.toString();
                 Editable passConfEditable = mConfirmPass.getText();
                 String confirmPass = passConfEditable.toString();
+                String school = mSchools.getSelectedItem().toString();
 
                 if (!pass.equals(confirmPass)) {
                     mPass.setError("Passwords must match");
                 } else {
-                    createNewEmployee(fName, lName, email, pass, phone);
+                    createNewEmployee(fName, lName, email, pass, phone, school);
                 }
             }
         });
     }
 
-    public void createNewParent(String fName, String lName, String email, String password, String phone) {
+    public void createNewParent(String fName, String lName, String email, String password, String phone, String school) {
         if (!validateForm()) {
             return;
         }
-        ParentUser curUser = new ParentUser(fName, lName, email, password, phone, "", "", "", "");
+        ParentUser curUser = new ParentUser(fName, lName, email, password, phone, school, "", "",
+                "", "", "", "", "", "", "");
         model.setCurrentUser(curUser);
         Log.d("Register", curUser.toString());
         Intent intent = new Intent(getBaseContext(), ParentRegisterActivity.class);
         startActivity(intent);
     }
 
-    public void createNewStudent(String fName, String lName, String email, String password, String phone) {
+    public void createNewStudent(String fName, String lName, String email, String password, String phone, String school) {
         if (!validateForm()) {
             return;
         }
-        StudentUser curUser = new StudentUser(fName, lName, email, password, phone, true, "");
+        StudentUser curUser = new StudentUser(fName, lName, email, password, phone, school, true, "",
+                "", "", "", "", "");
         model.setCurrentUser(curUser);
         Log.d("Register", curUser.toString());
         Intent intent = new Intent(getBaseContext(), StudentRegisterActivity.class);
         startActivity(intent);
     }
 
-    public void createNewEmployee(String fName, String lName, String email, String password, String phone) {
+    public void createNewEmployee(String fName, String lName, String email, String password, String phone, String school) {
         if (!validateForm()) {
             return;
         }
-        EmployeeUser curUser = new EmployeeUser(fName, lName, email, password, phone, "");
+        EmployeeUser curUser = new EmployeeUser(fName, lName, email, password, phone, school, "",
+                "", "", "", "", "");
         model.setCurrentUser(curUser);
         Log.d("Register", curUser.toString());
         Intent intent = new Intent(getBaseContext(), EmployeeRegisterActivity.class);
@@ -199,5 +226,40 @@ public class RegisterActivity extends AppCompatActivity {
             mPhone.setError(null);
         }
         return valid;
+    }
+
+    public void readEnumSchools() {
+        for (School school: School.values()) {
+            schools.add(school.getTitle());
+        }
+    }
+
+    public void readSchools() {
+        try {
+            InputStream is = getResources().openRawResource(R.raw.schools);
+            BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
+            br.readLine();
+            String line = br.readLine();
+
+            final String[] tokens = line.split("#");
+            for (int i = 0; i < 1; i++) {
+                String curSchool = tokens[i];
+                //schools.add(curSchool);
+            }
+            br.close();
+        } catch (IOException e) {
+            Log.e("Main", "error reading assets", e);
+        }
+    }
+
+    public static <School extends Enum<School>> School getEnumFromString (Class<School> c, String string) {
+        if (c != null && string != null) {
+            try {
+                return Enum.valueOf(c, string.trim().toUpperCase());
+            } catch (IllegalArgumentException ex) {
+
+            }
+        }
+        return null;
     }
 }

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.mmcke.campuscoupons.controllers.PlanChooseActivity">
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Choose your payment plan"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="368dp"
+        android:layout_height="423dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header">
+
+        <TextView
+            android:id="@+id/whiteHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="White Plan: $5 per month"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            tools:layout_marginTop="5dp" />
+
+        <Button
+            android:id="@+id/whiteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="35dp"
+            android:layout_weight="0"
+            android:background="@color/colorPrimary"
+            android:gravity="center_vertical|center_horizontal|center"
+            android:text="See Details"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            tools:layout_marginTop="5dp" />
+
+        <TextView
+            android:id="@+id/blueHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="Blue Plan: $10 per month"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/blueButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="35dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="0"
+            android:background="@color/colorPrimary"
+            android:text="See Details"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/goldHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="0"
+            android:text="Gold Plan: $15 per month"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/goldButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:background="@color/colorPrimary"
+            android:text="See Details"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

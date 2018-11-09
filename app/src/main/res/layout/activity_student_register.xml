@@ -27,12 +27,24 @@
             android:textColor="@android:color/black"
             android:textSize="24sp" />
 
-        <RadioButton
-            android:id="@+id/onCampus"
+        <RadioGroup
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:duplicateParentState="true"
-            android:text="I live on campus" />
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/onCampus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="I live on campus" />
+
+            <RadioButton
+                android:id="@+id/offCampus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="I live off campus" />
+        </RadioGroup>
 
         <EditText
             android:id="@+id/idNumber"
@@ -162,5 +174,11 @@
         app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="29dp" />
 
 </android.support.constraint.ConstraintLayout>

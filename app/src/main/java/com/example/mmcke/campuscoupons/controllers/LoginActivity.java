@@ -24,7 +24,9 @@ import com.facebook.*;
 import com.facebook.login.*;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -62,6 +64,7 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
+                handleFacebookAccessToken(loginResult.getAccessToken());
                 Intent intent = new Intent(getBaseContext(), MainActivity.class);
                 startActivity(intent);
             }
@@ -86,6 +89,21 @@ public class LoginActivity extends AppCompatActivity {
                 Editable passViewEditable = mPassView.getText();
                 final String passViewString = passViewEditable.toString();
                 signIn(userViewString, passViewString);
+            }
+        });
+    }
+
+    private void handleFacebookAccessToken(AccessToken token) {
+        AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
+        mAuth.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                    startActivity(intent);
+                } else {
+                    mUserView.setError("Login failed.");
+                }
             }
         });
     }

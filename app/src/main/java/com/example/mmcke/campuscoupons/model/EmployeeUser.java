@@ -1,16 +1,16 @@
 package com.example.mmcke.campuscoupons.model;
 
+import com.example.mmcke.campuscoupons.model.User;
 import com.example.mmcke.campuscoupons.model.School;
 
 /**
  *
- * Class for a student user type
+ * Class for an employee user type
  * Created by mmcke on 11/5/2018.
  */
 
-public class StudentUser extends User {
-    private boolean onCampus;
-    private String studIDNum;
+public class EmployeeUser extends User {
+    private String employeeIDNum;
     private String address;
     private String country;
     private String state;
@@ -18,12 +18,11 @@ public class StudentUser extends User {
     private String zip;
     private School school;
 
-    public StudentUser(String _firstName, String _lastName, String _email, String _password, String _phone,
-                       String _school, boolean _onCampus, String _studIDNum, String _address, String _country,
-                       String _state, String _city, String _zip) {
+    public EmployeeUser(String _firstName, String _lastName, String _email, String _password, String _phone,
+                        String _school, String _employeeIDNum, String _address, String _country,
+                        String _state, String _city, String _zip) {
         super(_firstName, _lastName, _email, _password, _phone, _school);
-        onCampus = _onCampus;
-        studIDNum = _studIDNum;
+        employeeIDNum = _employeeIDNum;
         address = _address;
         country = _country;
         state = _state;
@@ -31,21 +30,13 @@ public class StudentUser extends User {
         zip = _zip;
     }
 
-    public StudentUser() {
-        this("Generic", "User", "Genericemail", "password", "1234567890", School.GEORGIASTATE.getTitle(), true, "123456789", "123 Main Street", "USA", "State", "Anytown", "00000");
+    public EmployeeUser() {
+        this("Generic", "User", "Genericemail", "password", "1234567890", School.GEORGIASTATE.getTitle(), "123456789", "123 Main Street", "USA", "State", "Anytown", "00000");
     }
 
-    public void setOnCampus(boolean _onCampus) {
-        onCampus = _onCampus;
-    }
+    public void setEmployeeIDNum(String _employeeIDNum) { employeeIDNum = _employeeIDNum;}
 
-    public boolean getOnCampus() {return onCampus;}
-
-    public void setStudIDNum(String _studIDNum) {
-        studIDNum = _studIDNum;
-    }
-
-    public String getStudIDNum() { return studIDNum;}
+    public String getEmployeeIDNum() { return employeeIDNum;}
 
     public void setAddress(String _address) { address = _address;}
 

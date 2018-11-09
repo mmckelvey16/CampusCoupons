@@ -27,11 +27,6 @@
         <activity android:name=".controllers.ParentRegisterActivity" />
         <activity android:name=".controllers.StudentRegisterActivity" />
         <activity android:name=".controllers.EmployeeRegisterActivity" />
-
-        <meta-data
-            android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id" />
-
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
@@ -48,7 +43,11 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".controllers.MainActivity"/>
+        <activity android:name=".controllers.MainActivity" />
+        <activity android:name=".controllers.PlanChooseActivity" />
+        <activity android:name=".controllers.WhitePlanActivity" />
+        <activity android:name=".controllers.BluePlanActivity" />
+        <activity android:name=".controllers.GoldPlanActivity"></activity>
     </application>
 
 </manifest>
