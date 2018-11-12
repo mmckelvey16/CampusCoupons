@@ -9,15 +9,21 @@ import java.util.ArrayList;
  */
 
 public enum School {
-        GEORGIASTATE("Georgia State");
+        GEORGIASTATE("Georgia State"),
+        GEORGIATECH("Georgia Tech");
+
 
         private final String title;
-        ArrayList<String> coupons = new ArrayList<String>();
+        ArrayList<Coupon> coupons = new ArrayList<Coupon>();
         private School(final String _title) {
             title = _title;
         }
 
-        public ArrayList<String> getCoupons() { return new ArrayList<String>(coupons);}
+        public ArrayList<Coupon> getCoupons() { return new ArrayList<Coupon>(coupons);}
+
+        public void addCoupon(Coupon coupon) {
+            coupons.add(coupon);
+        }
 
         public String getTitle() { return title;}
 }

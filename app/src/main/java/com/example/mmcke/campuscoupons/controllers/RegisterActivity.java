@@ -147,7 +147,7 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
         ParentUser curUser = new ParentUser(fName, lName, email, password, phone, school, "", "",
-                "", "", "", "", "", "", "");
+                "", "", "", "", "", "", "", "", "", "", 0);
         model.setCurrentUser(curUser);
         Log.d("Register", curUser.toString());
         Intent intent = new Intent(getBaseContext(), ParentRegisterActivity.class);
@@ -171,7 +171,7 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
         EmployeeUser curUser = new EmployeeUser(fName, lName, email, password, phone, school, "",
-                "", "", "", "", "");
+                "", "", "", "", "", "", "", "", 0);
         model.setCurrentUser(curUser);
         Log.d("Register", curUser.toString());
         Intent intent = new Intent(getBaseContext(), EmployeeRegisterActivity.class);

@@ -146,7 +146,7 @@ public class StudentRegisterActivity extends AppCompatActivity {
     }
 
     private void AddFirebaseUser(StudentUser user) {
-        db.collection("users").document(user.getEmail()).set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+        db.collection("studentUsers").document(user.getEmail()).set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Log.d("Main", "DataSnapshot added successfully");

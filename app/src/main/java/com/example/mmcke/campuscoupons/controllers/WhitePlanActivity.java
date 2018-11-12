@@ -23,5 +23,14 @@ public class WhitePlanActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button SelectButton = findViewById(R.id.selectButton);
+        SelectButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), PaymentActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

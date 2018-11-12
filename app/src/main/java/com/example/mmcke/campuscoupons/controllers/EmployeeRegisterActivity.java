@@ -136,7 +136,7 @@ public class EmployeeRegisterActivity extends AppCompatActivity {
                     curUser.setEmployeeIDNum(mEmployeeID.getText().toString());
                     EmployeeUser newUser = new EmployeeUser(curUser.getFirstName(), curUser.getLastName(), curUser.getEmail(),
                             curUser.getPassword(), curUser.getPhoneNumber(), curUser.getSchoolName(), curUser.getEmployeeIDNum(), address,
-                            country, state, state, zip);
+                            country, state, state, zip, "", "", "", 0);
                     model.setCurrentUser(newUser);
                     AddFirebaseUser(newUser);
                     Intent intent = new Intent(getBaseContext(), PlanChooseActivity.class);
@@ -151,7 +151,7 @@ public class EmployeeRegisterActivity extends AppCompatActivity {
     }
 
     private void AddFirebaseUser(EmployeeUser user) {
-        db.collection("users").document(user.getEmail()).set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+        db.collection("employeeUsers").document(user.getEmail()).set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Log.d("Main", "DocumentSnapshot added successfully");

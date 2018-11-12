@@ -136,7 +136,7 @@ public class ParentRegisterActivity extends AppCompatActivity {
                     ParentUser newUser = new ParentUser(curUser.getFirstName(), curUser.getLastName(), curUser.getEmail(),
                             curUser.getPassword(), curUser.getPhoneNumber(), curUser.getSchoolName(), curUser.getStudName(), curUser.getStudEmail(),
                             curUser.getStudPhone(), curUser.getStudIDNum(), curUser.getAddress(), curUser.getCountry(),
-                            curUser.getState(), curUser.getCity(), curUser.getZip());
+                            curUser.getState(), curUser.getCity(), curUser.getZip(), "", "", "", 0);
                     model.setCurrentUser(newUser);
                     AddFirebaseUser((ParentUser)newUser);
                     Intent intent = new Intent(getBaseContext(), PlanChooseActivity.class);
@@ -152,7 +152,7 @@ public class ParentRegisterActivity extends AppCompatActivity {
     }
 
     private void AddFirebaseUser(ParentUser user) {
-        db.collection("users").document(user.getEmail()).set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+        db.collection("parentUsers").document(user.getEmail()).set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Log.d("Main", "DocumentSnapshot added successfully");

@@ -19,10 +19,15 @@ public class ParentUser extends User {
     private String city;
     private String zip;
     private School school;
+    private String cardName;
+    private String cardNum;
+    private String expirationDate;
+    private int crn;
 
     public ParentUser(String _firstName, String _lastName, String _email, String _password, String _phoneNumber,
                       String _school, String _studName, String _studEmail, String _studPhone, String _studIDNum,
-                      String _address, String _country, String _state, String _city, String _zip) {
+                      String _address, String _country, String _state, String _city, String _zip, String _cardName,
+                      String _cardNum, String _expirationDate, int _crn) {
         super(_firstName, _lastName, _email, _password, _phoneNumber, _school);
         studName = _studName;
         studEmail = _studEmail;
@@ -33,11 +38,16 @@ public class ParentUser extends User {
         state = _state;
         city = _city;
         zip = _zip;
+        cardName = _cardName;
+        cardNum = _cardNum;
+        expirationDate = _expirationDate;
+        crn = _crn;
     }
 
     public ParentUser() {
         this("Generic", "User", "genericEmail", "password", "1234567890", School.GEORGIASTATE.getTitle(), "Generic Student", "GenericEmail",
-                "1234567890", "123456789", "123 Main Street", "USA", "State", "Anytown", "00000");
+                "1234567890", "123456789", "123 Main Street", "USA", "State", "Anytown", "00000", "Card Name",
+                "1234567890123456", "01/00", 123);
     }
 
     public void setStudName(String _studName) {
@@ -83,4 +93,20 @@ public class ParentUser extends User {
     public void setZip(String _zip) { zip = _zip;}
 
     public String getZip() { return zip;}
+
+    public void setCardName(String _cardName) { cardName = _cardName;}
+
+    public String getCardName() { return cardName;}
+
+    public void setCardNum(String _cardNum) { cardNum = _cardNum;}
+
+    public String getCardNum() { return cardNum;}
+
+    public void setExpirationDate(String _expirationDate) { expirationDate = _expirationDate;}
+
+    public String getExpirationDate() { return expirationDate;}
+
+    public void setCrn(int _crn) { crn = _crn;}
+
+    public int getCrn() { return crn;}
 }
