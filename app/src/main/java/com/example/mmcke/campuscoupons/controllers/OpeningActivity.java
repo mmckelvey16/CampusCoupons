@@ -34,5 +34,16 @@ public class OpeningActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button BusinessButton = findViewById(R.id.businessButton);
+        BusinessButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), BusinessRegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 }

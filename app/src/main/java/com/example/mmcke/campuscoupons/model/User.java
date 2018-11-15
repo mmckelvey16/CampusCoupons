@@ -27,6 +27,10 @@ public abstract class User {
         school = _school;
     }
 
+    public User() {
+        this("Firstname", "Lastname", "email", "password", "phone", "school");
+    }
+
     public String getFirstName() {
         return firstName;
     }
