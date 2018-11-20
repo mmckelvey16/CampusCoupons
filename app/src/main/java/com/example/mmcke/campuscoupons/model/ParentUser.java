@@ -25,10 +25,10 @@ public class ParentUser extends User {
     private int crn;
 
     public ParentUser(String _firstName, String _lastName, String _email, String _password, String _phoneNumber,
-                      String _school, String _studName, String _studEmail, String _studPhone, String _studIDNum,
+                      String _school, String _userType, String _studName, String _studEmail, String _studPhone, String _studIDNum,
                       String _address, String _country, String _state, String _city, String _zip, String _cardName,
                       String _cardNum, String _expirationDate, int _crn) {
-        super(_firstName, _lastName, _email, _password, _phoneNumber, _school);
+        super(_firstName, _lastName, _email, _password, _phoneNumber, _school, _userType);
         studName = _studName;
         studEmail = _studEmail;
         studPhone = _studPhone;
@@ -45,7 +45,7 @@ public class ParentUser extends User {
     }
 
     public ParentUser() {
-        this("Generic", "User", "genericEmail", "password", "1234567890", School.GEORGIASTATE.getTitle(), "Generic Student", "GenericEmail",
+        this("Generic", "User", "genericEmail", "password", "1234567890", School.GEORGIASTATE.getTitle(), "parent", "Generic Student", "GenericEmail",
                 "1234567890", "123456789", "123 Main Street", "USA", "State", "Anytown", "00000", "Card Name",
                 "1234567890123456", "01/00", 123);
     }

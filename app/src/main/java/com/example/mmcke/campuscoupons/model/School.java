@@ -26,4 +26,8 @@ public enum School {
         }
 
         public String getTitle() { return title;}
+
+        public void setCoupons(ArrayList<Coupon> coupons) {
+                this.coupons = coupons;
+        }
 }

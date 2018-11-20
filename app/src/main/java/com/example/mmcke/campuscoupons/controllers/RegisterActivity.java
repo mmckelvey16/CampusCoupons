@@ -146,7 +146,7 @@ public class RegisterActivity extends AppCompatActivity {
         if (!validateForm()) {
             return;
         }
-        ParentUser curUser = new ParentUser(fName, lName, email, password, phone, school, "", "",
+        ParentUser curUser = new ParentUser(fName, lName, email, password, phone, school, "parent", "", "",
                 "", "", "", "", "", "", "", "", "", "", 0);
         model.setCurrentUser(curUser);
         Log.d("Register", curUser.toString());
@@ -158,7 +158,7 @@ public class RegisterActivity extends AppCompatActivity {
         if (!validateForm()) {
             return;
         }
-        StudentUser curUser = new StudentUser(fName, lName, email, password, phone, school, true, "",
+        StudentUser curUser = new StudentUser(fName, lName, email, password, phone, school, "student", true, "",
                 "", "", "", "", "");
         model.setCurrentUser(curUser);
         Log.d("Register", curUser.toString());
@@ -170,7 +170,7 @@ public class RegisterActivity extends AppCompatActivity {
         if (!validateForm()) {
             return;
         }
-        EmployeeUser curUser = new EmployeeUser(fName, lName, email, password, phone, school, "",
+        EmployeeUser curUser = new EmployeeUser(fName, lName, email, password, phone, school, "employee", "",
                 "", "", "", "", "", "", "", "", 0);
         model.setCurrentUser(curUser);
         Log.d("Register", curUser.toString());

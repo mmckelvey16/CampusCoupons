@@ -135,7 +135,7 @@ public class EmployeeRegisterActivity extends AppCompatActivity {
                     curUser.setZip(zip);
                     curUser.setEmployeeIDNum(mEmployeeID.getText().toString());
                     EmployeeUser newUser = new EmployeeUser(curUser.getFirstName(), curUser.getLastName(), curUser.getEmail(),
-                            curUser.getPassword(), curUser.getPhoneNumber(), curUser.getSchoolName(), curUser.getEmployeeIDNum(), address,
+                            curUser.getPassword(), curUser.getPhoneNumber(), curUser.getSchoolName(), curUser.getUserType(), curUser.getEmployeeIDNum(), address,
                             country, state, state, zip, "", "", "", 0);
                     model.setCurrentUser(newUser);
                     AddFirebaseUser(newUser);

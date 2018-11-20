@@ -134,7 +134,7 @@ public class ParentRegisterActivity extends AppCompatActivity {
                     curUser.setStudName(mStudNameView.getText().toString());
                     curUser.setStudPhone(mStudPhoneView.getText().toString());
                     ParentUser newUser = new ParentUser(curUser.getFirstName(), curUser.getLastName(), curUser.getEmail(),
-                            curUser.getPassword(), curUser.getPhoneNumber(), curUser.getSchoolName(), curUser.getStudName(), curUser.getStudEmail(),
+                            curUser.getPassword(), curUser.getPhoneNumber(), curUser.getSchoolName(), curUser.getUserType(), curUser.getStudName(), curUser.getStudEmail(),
                             curUser.getStudPhone(), curUser.getStudIDNum(), curUser.getAddress(), curUser.getCountry(),
                             curUser.getState(), curUser.getCity(), curUser.getZip(), "", "", "", 0);
                     model.setCurrentUser(newUser);

@@ -16,19 +16,21 @@ public abstract class User {
     private String password;
     private String phoneNumber;
     private String school;
+    private String userType;
 
     public User(String _firstName, String _lastName, String _email, String _password, String _phoneNumber,
-                String _school) {
+                String _school, String _userType) {
         firstName = _firstName;
         lastName = _lastName;
         email = _email;
         password = _password;
         phoneNumber = _phoneNumber;
         school = _school;
+        userType = _userType;
     }
 
     public User() {
-        this("Firstname", "Lastname", "email", "password", "phone", "school");
+        this("Firstname", "Lastname", "email", "password", "phone", "school", "user");
     }
 
     public String getFirstName() {
@@ -52,4 +54,6 @@ public abstract class User {
     }
 
     public String getSchoolName() { return school;}
+
+    public String getUserType() { return userType;}
 }

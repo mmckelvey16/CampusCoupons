@@ -133,13 +133,16 @@ public class StudentRegisterActivity extends AppCompatActivity {
                     curUser.setStudIDNum(mIDNum.getText().toString());
                     curUser.setZip(mZip.getText().toString());
                     StudentUser newUser = new StudentUser(curUser.getFirstName(), curUser.getLastName(),
-                            curUser.getEmail(), curUser.getPassword(), curUser.getPhoneNumber(), curUser.getSchoolName(), curUser.getOnCampus(),
+                            curUser.getEmail(), curUser.getPassword(), curUser.getPhoneNumber(), curUser.getSchoolName(), curUser.getUserType(), curUser.getOnCampus(),
                             curUser.getStudIDNum(), curUser.getAddress(), curUser.getCountry(), curUser.getState(),
                             curUser.getCity(), curUser.getZip());
                     model.setCurrentUser(newUser);
                     AddFirebaseUser(newUser);
                     Intent intent = new Intent(getBaseContext(), MainActivity.class);
                     startActivity(intent);
+                } else {
+                    mIDNum.setError("Failure registering user");
+                    Log.e("Main", task.getException().getMessage());
                 }
             }
         });

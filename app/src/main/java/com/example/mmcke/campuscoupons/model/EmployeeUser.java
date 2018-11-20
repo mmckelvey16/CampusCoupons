@@ -23,10 +23,10 @@ public class EmployeeUser extends User {
     private int crn;
 
     public EmployeeUser(String _firstName, String _lastName, String _email, String _password, String _phone,
-                        String _school, String _employeeIDNum, String _address, String _country,
+                        String _school, String _userType, String _employeeIDNum, String _address, String _country,
                         String _state, String _city, String _zip, String _cardName, String _cardNum,
                         String _expirationDate, int _crn) {
-        super(_firstName, _lastName, _email, _password, _phone, _school);
+        super(_firstName, _lastName, _email, _password, _phone, _school, _userType);
         employeeIDNum = _employeeIDNum;
         address = _address;
         country = _country;
@@ -40,7 +40,7 @@ public class EmployeeUser extends User {
     }
 
     public EmployeeUser() {
-        this("Generic", "User", "Genericemail", "password", "1234567890", School.GEORGIASTATE.getTitle(), "123456789", "123 Main Street", "USA", "State", "Anytown", "00000",
+        this("Generic", "User", "Genericemail", "password", "1234567890", School.GEORGIASTATE.getTitle(), "employee", "123456789", "123 Main Street", "USA", "State", "Anytown", "00000",
         "Card Name", "1234567890123456", "01/00", 123);
     }
 

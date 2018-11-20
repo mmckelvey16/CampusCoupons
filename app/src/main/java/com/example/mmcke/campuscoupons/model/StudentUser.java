@@ -19,9 +19,9 @@ public class StudentUser extends User {
     private School school;
 
     public StudentUser(String _firstName, String _lastName, String _email, String _password, String _phone,
-                       String _school, boolean _onCampus, String _studIDNum, String _address, String _country,
+                       String _school, String _userType, boolean _onCampus, String _studIDNum, String _address, String _country,
                        String _state, String _city, String _zip) {
-        super(_firstName, _lastName, _email, _password, _phone, _school);
+        super(_firstName, _lastName, _email, _password, _phone, _school, _userType);
         onCampus = _onCampus;
         studIDNum = _studIDNum;
         address = _address;
@@ -32,7 +32,7 @@ public class StudentUser extends User {
     }
 
     public StudentUser() {
-        this("Generic", "User", "Genericemail", "password", "1234567890", School.GEORGIASTATE.getTitle(), true, "123456789", "123 Main Street", "USA", "State", "Anytown", "00000");
+        this("Generic", "User", "Genericemail", "password", "1234567890", School.GEORGIASTATE.getTitle(), "student", true, "123456789", "123 Main Street", "USA", "State", "Anytown", "00000");
     }
 
     public void setOnCampus(boolean _onCampus) {

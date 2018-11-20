@@ -15,6 +15,7 @@ import android.widget.Spinner;
 
 import com.example.mmcke.campuscoupons.R;
 import com.example.mmcke.campuscoupons.model.BusinessUser;
+import com.example.mmcke.campuscoupons.model.Model;
 import com.example.mmcke.campuscoupons.model.School;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -40,6 +41,7 @@ public class BusinessRegisterActivity extends AppCompatActivity {
     private EditText mLastName;
     private final ArrayList<String> schools = new ArrayList<String>();
     private FirebaseAuth mAuth;
+    private final Model model = Model.getInstance();
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
@@ -117,8 +119,9 @@ public class BusinessRegisterActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     Log.d("Main", "registered business");
                     BusinessUser curUser = new BusinessUser(fName, lName, name, email, phone,
-                            mAddressOne.getText().toString() + mAddressTwo.getText().toString(), pass, school);
+                            mAddressOne.getText().toString() + mAddressTwo.getText().toString(), pass, school, "business");
                     addFirebaseUser(curUser);
+                    model.setCurrentUser(curUser);
                     Intent intent = new Intent(getBaseContext(), BusinessActivity.class);
                     startActivity(intent);
                 } else {
@@ -189,7 +192,7 @@ public class BusinessRegisterActivity extends AppCompatActivity {
     }
 
     private void addFirebaseUser(BusinessUser user) {
-        db.collection("businesses").document(user.getBusName()).set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+        db.collection("businesses").document(user.getEmail()).set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Log.d("Main", "Added user");

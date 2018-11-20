@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.mmcke.campuscoupons.R;
+import com.example.mmcke.campuscoupons.model.BusinessUser;
+import com.example.mmcke.campuscoupons.model.Model;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
@@ -29,6 +31,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -36,6 +41,8 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private EditText mUserView;
     private EditText mPassView;
+    private Model model = Model.getInstance();
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -108,7 +115,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void signIn(String email, String password) {
+    private void signIn(final String email, String password) {
         if (!validateForm()) {
             return;
         }
@@ -118,8 +125,26 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     FirebaseUser user = mAuth.getCurrentUser();
-                    Intent intent = new Intent(getBaseContext(), MainActivity.class);
-                    startActivity(intent);
+                    String UID = user.getUid();
+                    DocumentReference docRef = db.collection("businesses").document(email);
+                    docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            DocumentSnapshot doc = task.getResult();
+                            if (doc.exists()) {
+                                BusinessUser user = new BusinessUser((String)doc.get("firstName"),
+                                        (String)doc.get("lastName"), (String)doc.get("busName"), (String)doc.get("email"),
+                                        (String)doc.get("phoneNumber"), "address", (String)doc.get("password"), (String)doc.get("schoolName"),
+                                        (String)doc.get("userType"));
+                                model.setCurrentUser(user);
+                                Intent intent = new Intent(getBaseContext(), BusinessActivity.class);
+                                startActivity(intent);
+                            } else {
+                                Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                                startActivity(intent);
+                            }
+                        }
+                    });
                 } else {
                     mUserView.setError("Login failed.");
                 }

@@ -50,7 +50,8 @@
         <activity android:name=".controllers.GoldPlanActivity" />
         <activity android:name=".controllers.PaymentActivity" />
         <activity android:name=".controllers.BusinessActivity" />
-        <activity android:name=".controllers.BusinessRegisterActivity"></activity>
+        <activity android:name=".controllers.BusinessRegisterActivity" />
+        <activity android:name=".controllers.AddCouponActivity"></activity>
     </application>
 
 </manifest>

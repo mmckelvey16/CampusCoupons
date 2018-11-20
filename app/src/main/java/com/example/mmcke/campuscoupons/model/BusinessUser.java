@@ -10,12 +10,14 @@ import java.util.ArrayList;
 
 public class BusinessUser extends User{
     private String busName;
+    private String address;
     private ArrayList<Coupon> coupons = new ArrayList<Coupon>();
 
     public BusinessUser(String _fName, String _lName, String _busName, String _email, String _phone,
-                        String _address, String _password, String _school) {
-        super(_fName, _lName, _email, _password, _phone, _address);
+                        String _address, String _password, String _school, String _userType) {
+        super(_fName, _lName, _email, _password, _phone, _school, _userType);
         busName = _busName;
+        address = _address;
     }
 
     public void addCoupon(Coupon coupon) {
